@@ -1,4 +1,4 @@
-use sysinfo::System;
+use sysinfo::{System, Product};
 use std::{thread, time::Duration};
 use std::io::{self, Write};
 
@@ -19,8 +19,10 @@ fn main() {
 
         // Static info
         println!("System name:           {:?}", System::name().unwrap());
+        println!("Model:                 {:?}", Product::version().unwrap());
         println!("Kernel version:        {:?}", System::kernel_version().unwrap());
         println!("Host name:             {:?}", System::host_name().unwrap());
+        println!("# of CPU cores:        {:?}", cpu::Cpu::num_of_cpu(&system));
 
         println!();
 
@@ -48,6 +50,6 @@ fn main() {
             ui::bar(ram_percent)
         );
 
-        thread::sleep(Duration::from_millis(250));
+        thread::sleep(Duration::from_millis(1000));
     }
 }

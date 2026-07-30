@@ -1,5 +1,5 @@
 pub fn bar(percent: f32) -> String {
-    let width = 15;
+    let width = 20;
 
     let filled = ((percent / 100.0) * width as f32) as usize;
 
